@@ -105,6 +105,7 @@
 }
 
 .mnav-menu-item {
+    height: none;
     float: none;
     position: relative;
     display: block;
@@ -121,6 +122,7 @@
 }
 
 .mnav-submenu-item{
+    height: auto;
     border-bottom: 1px solid #aaa;
 }
 
