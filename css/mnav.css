@@ -1,0 +1,131 @@
+#nav-demo {
+    display: block;
+    background-color: #ccc;
+}
+
+.mnav-menu {
+    margin: 0;
+    display: block;
+    width: 100%;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.mnav-menu-item {
+    min-height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    *display:inline-block;
+    zoom:1;
+}
+
+.mnav-menu-item > a {
+    display: block;
+    padding: 5px 10px;
+}
+
+.mnav-menu-item a:hover {
+    background-color: #ddd;
+}
+
+.mnav-submenu {
+    background-color: #ccc;
+    position: absolute;
+    padding-left: 0;
+    z-index: 9999;
+    display: none;
+    list-style-type: none;
+}
+
+.mnav-submenu-item {
+    padding: 5px 19px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.mnav-submenu-item:hover {
+    background-color: #ddd;
+}
+
+.mnav-mobile-btn {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    display: none;
+    cursor: pointer;
+    background-image: url('../img/mobile-nav-icon.svg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-color: #000;
+}
+
+.mnav-mobile-btn:hover {
+    background-color: #555;
+}
+
+.mnav-open-close {
+    display: none;
+    float: right;
+    border-left: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+.mnav-mobile-arrow {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    display: block;
+    cursor: pointer;
+    background-image: url('../img/mobile-arrow-icon.svg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-color: #ccc;
+}
+
+.mnav-mobile-arrow:hover {
+    background-color: #555;
+}
+
+.mnav-mobile-arrow-mirror {
+    -webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+	-ms-transform:rotate(180deg);
+	-o-transform:rotate(180deg);
+	transform:rotate(180deg);
+}
+
+@media only screen and (max-width: 740px) {
+
+.mnav-mobile-btn {
+    display: block;
+}
+
+.mnav-menu {
+    display: none;
+}
+
+.mnav-menu-item {
+    float: none;
+    position: relative;
+    display: block;
+    border-bottom: 1px solid #aaa;
+}
+
+.mnav-open-close {
+    display: block;
+}
+
+.mnav-submenu {
+    width: 100%;
+    position: relative;
+}
+
+.mnav-submenu-item{
+    border-bottom: 1px solid #aaa;
+}
+
+.mnav-submenu-item a {
+    display: block;
+}
+
+}
