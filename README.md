@@ -31,9 +31,11 @@ License: MIT
 ```
 
 
-##Customization
-- `mainMenuSpeed` - (Integer in ms) Speed when the main menu opens
-- `subMenuSpeed` - (Integer in ms) Speed when the sub menu opens
+##Opitions
+| Option          | Default | Description                    |
+| --------------- |:-------:| ------------------------------ |
+| `mainMenuSpeed` | 200     | Speed when the main menu opens |
+| `subMenuSpeed`  | 200     | Speed when the sub menu opens  |
 
 ##Events
 - `mnav.open` - Opens the main menu (same as if you clicked the main menu button)
