@@ -23,7 +23,7 @@ License: MIT
   
   // or
   
-  $(functionn() {
+  $(function() {
     $('selector').Mnav({
       // options
     });
