@@ -12,6 +12,9 @@ License: MIT
   // Include Mnav
   <script type="text/javascript" src="js/mnav.js"></script>
   
+  // Include the CSS
+  <script href="css/mnav.css"></sciprt>
+  
   // Call Mnav
   $(function() {
     $('selector').Mnav();
@@ -28,6 +31,7 @@ License: MIT
 
 ##TODO
 - [ ] Implement theming
+- [ ] Implement Choice of whether to put the main menu button on the left or right side
 
 ##Notes
 You are free to modify the CSS and JS files to fit what you need to do. This is just a skeleton for you produce awesome apps in the future!
