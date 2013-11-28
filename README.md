@@ -13,7 +13,7 @@ License: MIT
   <script type="text/javascript" src="js/mnav.js"></script>
   
   // Include the CSS
-  <script href="css/mnav.css"></script>
+  <link rel="stylesheet" type="text/css" href="css/mnav.css"/>
   
   // Call Mnav
   $(function() {
