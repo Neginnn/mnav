@@ -4,7 +4,7 @@ Author: Karl Castillo<br/>
 License: MIT
 
 ##Instructions
-```javascript
+```html
 
   // Include jQuery
   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -14,13 +14,22 @@ License: MIT
   
   // Include the CSS
   <link rel="stylesheet" type="text/css" href="css/mnav.css"/>
-  
+```
+```javascript
   // Call Mnav
   $(function() {
     $('selector').Mnav();
   });
-
+  
+  // or
+  
+  $(functionn() {
+    $('selector').Mnav({
+      // options
+    });
+  }
 ```
+
 
 ##Customization
 - `mainMenuSpeed` - (Integer in ms) Speed when the main menu opens
