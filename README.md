@@ -31,8 +31,8 @@ License: MIT
 ```
 
 
-##Opitions
-| Option          | Default | Description                    |
+##Options
+| Option Name     | Default | Description                    |
 | --------------- |:-------:| ------------------------------ |
 | `mainMenuSpeed` | 200     | Speed when the main menu opens |
 | `subMenuSpeed`  | 200     | Speed when the sub menu opens  |
