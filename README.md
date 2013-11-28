@@ -23,6 +23,9 @@ License: MIT
 - `mainMenuSpeed` - (Integer in ms) Speed when the main menu opens
 - `subMenuSpeed` - (Integer in ms) Speed when the sub menu opens
 
+##Events
+- `mnav.open` - Opens the main menu (same as if you clicked the main menu button)
+
 ##TODO
 - [ ] Implement theming
 
