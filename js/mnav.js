@@ -73,7 +73,7 @@
         /** **/
         prepEvents: function() {
             var base = this;
-            base.on('mnav.open', function() {
+            base.$elem.on('mnav.open', function() {
                 base.openMenu();
             });
         },
