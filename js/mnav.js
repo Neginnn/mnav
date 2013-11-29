@@ -14,6 +14,7 @@
             var mobileContainer = $('<div/>', {
                 class: "mnav-mobile-btn"
             });
+            base.$elem.addClass('mnav-theme');
             base.$elem.prepend(mobileContainer);
             
             if(base.options.mobileButtonPos === 'left') {
