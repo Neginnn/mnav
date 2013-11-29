@@ -14,6 +14,9 @@ License: MIT
   
   // Include the CSS
   <link rel="stylesheet" type="text/css" href="css/mnav.css"/>
+  
+  // Include the Theme
+  <link rel="stylesheet" type="text/css" href="css/mnav-theme.css"/>
 ```
 ```javascript
   // Call Mnav
