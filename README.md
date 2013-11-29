@@ -32,18 +32,19 @@ License: MIT
 
 
 ##Options
-| Option Name       | Default | Description                                      |
-| ---------------   |:-------:| ------------------------------------------------ |
-| `mainMenuSpeed`   | 200     | Speed when the main menu opens                   |
-| `subMenuSpeed`    | 200     | Speed when the sub menu opens                    |
-| `mobileButtonPos` | 'right' | Position the mobile button left, center or right |
-| `subMenuOpen`     | false   | Open submenu by default (hides the arrow)        |
+| Option Name       | Default      | Description                                      |
+| ---------------   |:------------:| ------------------------------------------------ |
+| `theme`           | 'mnav-theme' | The theme to be used for the menu (class name)   |
+| `mainMenuSpeed`   | 200          | Speed when the main menu opens                   |
+| `subMenuSpeed`    | 200          | Speed when the sub menu opens                    |
+| `mobileButtonPos` | 'right'      | Position the mobile button left, center or right |
+| `subMenuOpen`     | false        | Open submenu by default (hides the arrow)        |
 
 ##Events
 - `mnav.open` - Opens the main menu (same as if you clicked the main menu button)
 
 ##TODO
-- [ ] Implement theming
+- [x] Implement theming
 - [x] Implement Choice of whether to put the main menu button on the left or right side
 
 ##Notes
