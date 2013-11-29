@@ -1,6 +1,12 @@
 #nav-demo {
-    display: block;
+    display: inline-block;
+    position: relative;
     background-color: #ccc;
+    width: 100%;
+    
+    /** Not Required **/
+    font-family: sans-serif;
+    font-weight: 600;
 }
 
 .mnav-menu {
@@ -53,6 +59,8 @@
     padding: 5px;
     display: none;
     cursor: pointer;
+    position: absolute;
+    top: 0;
     background-image: url('../img/mobile-nav-icon.svg');
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -95,6 +103,9 @@
 }
 
 @media only screen and (max-width: 740px) {
+#nav-demo {
+    padding: 40px 0 0;
+}
 
 .mnav-mobile-btn {
     display: block;

@@ -7,7 +7,6 @@
             base.userOptions = options;
             base.prepContainer();
             base.buildWidget();
-            base.addListeners();
         },
         /** This is where the buttons are added to the nav **/
         buildWidget: function() {
@@ -16,7 +15,22 @@
                 class: "mnav-mobile-btn"
             });
             base.$elem.prepend(mobileContainer);
-            base.$elem.children('.mnav-menu').children('.mnav-menu-item').has('ul').prepend('<span class="mnav-open-close"><b class="mnav-mobile-arrow"></b></span>');                        
+            
+            if(base.options.mobileButtonPos === 'left') {
+                mobileContainer.css({left:0});
+            } else if(base.options.mobileButtonPos === 'right') {
+                mobileContainer.css({right:0});
+            } else if(base.options.mobileButtonPos === 'center') {
+                mobileContainer.css({margin:'auto',position:'relative'});
+                base.$elem.css({padding:'0'});
+            }
+            
+            if(!base.options.subMenuOpen) {
+                base.$elem.children('.mnav-menu').children('.mnav-menu-item').has('ul').prepend('<span class="mnav-open-close"><b class="mnav-mobile-arrow"></b></span>'); 
+            } else {
+                base.$elem.find('.mnav-submenu').css({display: 'block'});
+            }
+            base.addListeners();
         },
         /** Adds listeners to the buttons **/
         addListeners: function() {
@@ -39,11 +53,13 @@
                     $(this).children('.mnav-mobile-arrow').toggleClass('mnav-mobile-arrow-mirror');
                 }          
             });
-            // Showing sub menus
-            base.$elem.children('.mnav-menu').on('click', '.mnav-open-close', function() {
-                $(this).siblings('.mnav-submenu:not(li)').slideToggle(base.options.subMenuSpeed);
-                $(this).children('.mnav-mobile-arrow').toggleClass('mnav-mobile-arrow-mirror');
-            });
+            if(!base.options.subMenuOpen) {
+                // Showing sub menus
+                base.$elem.children('.mnav-menu').on('click', '.mnav-open-close', function() {
+                    $(this).siblings('.mnav-submenu:not(li)').slideToggle(base.options.subMenuSpeed);
+                    $(this).children('.mnav-mobile-arrow').toggleClass('mnav-mobile-arrow-mirror');
+                });
+            }
             // Show the menu again just in case
             $(window).resize(function() {
                 if(!base.$elem.children('.mnav-mobile-btn').is(':visible')) {
@@ -88,8 +104,13 @@
         });
     };
     $.fn.Mnav.options = {
-        theme: null,
-        mainMenuSpeed: 200, // How fast will the main menu slide down?
-        subMenuSpeed: 200, // How fast will the sub menu slide down?
+        theme: null,                // Base class to be used
+        
+        mainMenuSpeed: 200,         // How fast will the main menu slide down?
+        subMenuSpeed: 200,          // How fast will the sub menu slide down?
+        
+        mobileButtonPos: 'right',   // Which side will the button be?
+        
+        subMenuOpen: false,         // Sub Menu open by default?
     };
 })(jQuery);
