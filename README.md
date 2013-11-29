@@ -32,17 +32,19 @@ License: MIT
 
 
 ##Options
-| Option Name     | Default | Description                    |
-| --------------- |:-------:| ------------------------------ |
-| `mainMenuSpeed` | 200     | Speed when the main menu opens |
-| `subMenuSpeed`  | 200     | Speed when the sub menu opens  |
+| Option Name       | Default | Description                                      |
+| ---------------   |:-------:| ------------------------------------------------ |
+| `mainMenuSpeed`   | 200     | Speed when the main menu opens                   |
+| `subMenuSpeed`    | 200     | Speed when the sub menu opens                    |
+| `mobileButtonPos` | 'right' | Position the mobile button left, center or right |
+| `subMenuOpen`     | false   | Open submenu by default (hides the arrow)        |
 
 ##Events
 - `mnav.open` - Opens the main menu (same as if you clicked the main menu button)
 
 ##TODO
 - [ ] Implement theming
-- [ ] Implement Choice of whether to put the main menu button on the left or right side
+- [x] Implement Choice of whether to put the main menu button on the left or right side
 
 ##Notes
 You are free to modify the CSS and JS files to fit what you need to do. This is just a skeleton for you produce awesome apps in the future!
