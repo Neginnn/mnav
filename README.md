@@ -32,7 +32,18 @@ License: MIT
     });
   }
 ```
+```css
+#ID_OF_CONTAINER {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
 
+/*Inside the media-query*/
+#ID_OF_CONTAINER {
+  padding-top: 40px;/* Height of your mobile button */
+}
+```
 
 ##Options
 | Option Name       | Default      | Description                                      |
