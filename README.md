@@ -18,6 +18,23 @@ License: MIT
   // Include the Theme
   <link rel="stylesheet" type="text/css" href="css/mnav-theme.css"/>
 ```
+
+###HTML Structure
+```html
+  <nav id="navigation">
+    <ul>
+      <li><a href="#">Link 1</a></li> <!-- No submenu -->
+      <li><a href="#">Link 2</a> <!-- Has Submenu -->
+        <ul>
+          <li><a href="#">Sub Link 1</a></li>
+          <li><a href="#">Sub Link 2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+```
+
+###Calling
 ```javascript
   // Call Mnav
   $(function() {
@@ -32,6 +49,8 @@ License: MIT
     });
   }
 ```
+
+###CSS Structure
 ```css
 #ID_OF_CONTAINER {
   display: inline-block;
@@ -44,6 +63,8 @@ License: MIT
   padding-top: 40px;/* Height of your mobile button */
 }
 ```
+**Important:**
+For the navigation to look its best, make all `anchor` tags be the same height as the buttons.
 
 ##Options
 | Option Name       | Default      | Description                                      |
@@ -60,6 +81,7 @@ License: MIT
 ##TODO
 - [x] Implement theming
 - [x] Implement Choice of whether to put the main menu button on the left or right side
+- [ ] Add more themes (more icons?)
 
 ##Notes
 You are free to modify the CSS and JS files to fit what you need to do. This is just a skeleton for you produce awesome apps in the future!
