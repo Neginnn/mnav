@@ -40,6 +40,7 @@ License: MIT
 | `theme`           | 'mnav-theme' | The theme to be used for the menu (class name)   |
 | `mainMenuSpeed`   | 200          | Speed when the main menu opens                   |
 | `subMenuSpeed`    | 200          | Speed when the sub menu opens                    |
+| `delayCloseSpeed` | 250          | Delay before the submenu closes after hover      |
 | `mobileButtonPos` | 'right'      | Position the mobile button left, center or right |
 | `subMenuOpen`     | false        | Open submenu by default (hides the arrow)        |
 
