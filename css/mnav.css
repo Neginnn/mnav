@@ -4,12 +4,12 @@
   width: 100%;
 }
 
-
 .mnav-menu {
     margin: 0;
     display: block;
     padding-left: 0;
-    list-style: none inside none;
+    list-style-image: none;
+    list-style-type: none;
 }
 
 .mnav-menu-item {
@@ -26,7 +26,7 @@
     padding-left: 0;
     z-index: 9999;
     display: none;
-    list-style: none inside none;
+    list-style-image: none;
 }
 
 .mnav-submenu-item {
@@ -57,7 +57,7 @@
 }
 
 .mnav-mobile-arrow {
-    height: 30px;
+    height: 28.4px;
     width: 30px;
     padding: 5px;
     display: block;
