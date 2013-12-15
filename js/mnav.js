@@ -1,4 +1,12 @@
-(function($) {
+if (typeof Object.create !== "function") {
+    Object.create = function(obj) {
+        function F() {};
+        F.prototype = obj;
+        return new F();
+    };
+}
+
+(function($, window, undefined) {
     var Mnav = {
         init: function(options, elem) { // Initialize
             var base = this;
@@ -12,7 +20,7 @@
         buildWidget: function() {
             var base = this;
             var mobileContainer = $('<div/>', {
-                class: "mnav-mobile-btn"
+                'class': "mnav-mobile-btn"
             });
             base.$elem.addClass(base.options.theme);
             base.$elem.prepend(mobileContainer);
@@ -34,43 +42,34 @@
         /** Adds listeners to the buttons **/
         addListeners: function() {
             var base = this;
+            var data = {
+                'speed': base.options.subMenuSpeed,
+                'delay': base.options.delayClose,
+                'func': base.openHover
+            }
             // Open the main menu
-            base.$elem.children('.mnav-mobile-btn').on('click', function() {
-                base.openMenu();      
-            });
-            // Eww jQuery dropwdown for when we're in desktop view (hover)
-            base.$elem.children('.mnav-menu').on('mouseenter', '.mnav-menu-item', function(e) {
-                if(!base.$elem.children('.mnav-mobile-btn').is(':visible')) {
-                    $(this).children('.mnav-submenu').slideToggle(base.options.subMenuSpeed);
-                }
-            });
-            // Same as abot but when the mouse leaves
-            base.$elem.children('.mnav-menu').on('mouseleave', '.mnav-menu-item', function(e) {
-                if(!base.$elem.children('.mnav-mobile-btn').is(':visible')) {
-                    $(this).children('.mnav-submenu').delay(base.options.delayCloseSpeed).slideToggle(base.options.subMenuSpeed);
-                }          
-            });
-            if(!base.options.subMenuOpen) {
+            base.$elem.children('.mnav-mobile-btn').on('click', data, base.openMenu);
+            //Eww jQuery dropwdown for when we're in desktop view (hover)
+            base.$elem.children('.mnav-menu').children('.mnav-menu-item').has('ul').one('mouseenter', data, base.openHover);
+            
+            if(!base.options.subMenuOpen) { // Don't attach if subMenuOpen == true
                 // Showing sub menus
                 base.$elem.children('.mnav-menu').on('click', '.mnav-open-close', function() {
-                    $(this).siblings('.mnav-submenu:not(li)').slideToggle(base.options.subMenuSpeed);
+                    $(this).siblings('.mnav-submenu').slideToggle(base.options.subMenuSpeed);
                     $(this).children('.mnav-mobile-arrow').toggleClass('mnav-mobile-arrow-mirror');
                 });
             }
             // Show the menu again just in case
             $(window).resize(function() {
                 if(!base.$elem.children('.mnav-mobile-btn').is(':visible')) {
-                    base.$elem.find('.mnav-submenu').hide();    
-                }
-                if(!base.$elem.children('.mnav-mobile-btn').is(':visible') && !base.$elem.children('.mnav-menu').is(':visible')) {
+                    base.$elem.find('.mnav-submenu').hide();
                     base.$elem.children('.mnav-menu').show();
-                }
-                if(base.$elem.children('.mnav-mobile-btn').is(':visible') && base.options.subMenuOpen) {
+                } else if(base.options.subMenuOpen) {
                     base.$elem.find('.mnav-submenu').show();
                 }
             });
         },
-        /** **/
+        /** Prepares the public events **/
         prepEvents: function() {
             var base = this;
             base.$elem.on('mnav.open', function() {
@@ -91,30 +90,43 @@
                     .children('li')
                         .addClass('mnav-submenu-item');    
         },
-        openMenu: function() {
-            var base = this;
-            if(base.options.subMenuOpen) {
-                base.$elem.find('.mnav-submenu').show();
+        /** Event handler for opening the menu when the mobile button is pressed **/
+        openMenu: function(event) {
+            $(this).siblings('.mnav-menu').slideToggle(event.data.speed);            
+        },
+        /** Event handler for when the menu item is hovered on **/
+        openHover: function(event) {
+            console.log('here');
+            if(!$(this).parent().siblings('.mnav-mobile-btn').is(':visible')) {
+                $(this).children('.mnav-submenu').slideToggle(event.data.speed);
+                $(this).one('mouseleave', function(e) {
+                    $(this).children('.mnav-submenu')
+                    .delay(event.data.delay)
+                    .slideToggle(event.data.speed, function() {
+                        $(this).parent().one('mouseenter', event.data, event.data.func);
+                    });
+                });
+            } else {
+                $(this).one('mouseenter', event.data, event.data.func);
             }
-            base.$elem.children('.mnav-menu:not(li)').slideToggle(base.options.mainMenuSpeed);            
         }
     };
     $.fn.Mnav = function(options) {
         return this.each(function() {
-          var mnav = Object.create(Mnav);
-          mnav.init(options, this);
-          $.data(this, 'Mnav', mnav);
+            var mnav = Object.create(Mnav);
+            mnav.init(options, this);
+            $.data(this, 'Mnav', mnav);
         });
     };
     $.fn.Mnav.options = {
-        theme: null,                // Base class to be used
+        theme: 'mnav-theme',        // Base class to be used
         
         mainMenuSpeed: 200,         // How fast will the main menu slide down?
         subMenuSpeed: 200,          // How fast will the sub menu slide down?
-        delayCloseSpeed: 250,       // How long to wait before the dropdown closes
+        delayClose: 250,            // How long to wait before the dropdown closes
         
         mobileButtonPos: 'right',   // Which side will the button be?
         
         subMenuOpen: false,         // Sub Menu open by default?
     };
-})(jQuery);
+})(jQuery, window, document);
