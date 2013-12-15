@@ -35,7 +35,11 @@ if (typeof Object.create !== "function") {
             }
             
             if(!base.options.subMenuOpen) {
-                base.$elem.children('.mnav-menu').children('.mnav-menu-item').has('ul').prepend('<span class="mnav-open-close"><b class="mnav-mobile-arrow"></b></span>'); 
+                base.$elem.children('.mnav-menu').children('.mnav-menu-item').has('ul').prepend('<span class="mnav-open-close"><b class="mnav-mobile-arrow"></b></span>');
+            } else {
+                if(base.$elem.children('.mnav-mobile-btn').is(':visible')) {
+                    base.$elem.find('.mnav-submenu').show();
+                }
             }
             base.addListeners();
         },

@@ -9,7 +9,7 @@
     margin: 0;
     display: block;
     padding-left: 0;
-    list-style-image: none;
+    list-style: none inside none;
 }
 
 .mnav-menu-item {
@@ -26,7 +26,11 @@
     padding-left: 0;
     z-index: 9999;
     display: none;
-    list-style-image: none; 
+    list-style: none inside none;
+}
+
+.mnav-submenu-item {
+    display: inline;
 }
 
 .mnav-submenu-item a {
