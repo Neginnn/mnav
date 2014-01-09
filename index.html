@@ -32,6 +32,7 @@
                 </li>
             </ul>
         </nav>
+        <a id="open-nav" href="#">Click to Open Nav</a>
         <div>
 <p>
 
@@ -49,9 +50,14 @@ Aliquam in metus ut ligula semper varius ut sed tellus. Curabitur hendrerit volu
         </div>
         <script type="text/javascript">
             $(function() {
-                $('#nav-demo').Mnav({
+                var nav = $('#nav-demo');
+                nav.Mnav({
                     mobileButtonPos: 'left',
                     subMenuOpen: false,
+                });
+                $('#open-nav').on('click', function(e) {
+                    e.preventDefault();
+                    nav.trigger('mnav.open');
                 });
             });
         </script>
