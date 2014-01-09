@@ -14,8 +14,8 @@ if (typeof Object.create !== "function") {
             base.options = $.extend({}, $.fn.Mnav.options, base.$elem.data(), options);
             base.userOptions = options;
             base.prepContainer();
-            base.buildWidget();
             base.prepEvents();
+            base.buildWidget();
         },
         /** This is where the buttons are added to the nav **/
         buildWidget: function() {
@@ -47,15 +47,17 @@ if (typeof Object.create !== "function") {
         /** Adds listeners to the buttons **/
         addListeners: function() {
             var base = this;
-            var data = {
-                'speed': base.options.subMenuSpeed,
-                'delay': base.options.delayClose,
-                'func': base.openHover
-            }
             // Open the main menu
-            base.$elem.children('.mnav-mobile-btn').on('click', data, base.openMenu);
+            base.$elem.children('.mnav-mobile-btn').on('click', function() {
+                base.$elem.trigger('mnav.open');          
+            });
             //Eww jQuery dropwdown for when we're in desktop view (hover)
-            base.$elem.children('.mnav-menu').children('.mnav-menu-item').has('ul').one('mouseenter', data, base.openHover);
+            base.$elem.find('.mnav-menu-item').has('ul').one('mouseenter', function() {
+                if($('#mnav-active').length === 0) {
+                    $(this).attr('id', 'mnav-active');
+                    base.$elem.trigger('mnav.hover');
+                }   
+            });
             
             if(!base.options.subMenuOpen) { // Don't attach if subMenuOpen == true
                 // Showing sub menus
@@ -77,12 +79,12 @@ if (typeof Object.create !== "function") {
         /** Prepares the public events **/
         prepEvents: function() {
             var base = this;
-            var data = {
-                'speed': base.options.subMenuSpeed,
-                'delay': base.options.delayClose,
-                'func': base.openHover
-            }
-            base.$elem.on('mnav.open', data, base.openMenu);
+            base.$elem.on('mnav.open', function() {
+                base.openMenu();    
+            });
+            base.$elem.on('mnav.hover', function() {
+                base.openHover();
+            });
         },
         /** This is where the necessary classes are added to the elements in your  nav **/
         prepContainer: function() {
@@ -99,24 +101,37 @@ if (typeof Object.create !== "function") {
                         .addClass('mnav-submenu-item');    
         },
         /** Event handler for opening the menu when the mobile button is pressed **/
-        openMenu: function(event) {
-            $(this).siblings('.mnav-menu').slideToggle(event.data.speed);            
+        openMenu: function() {
+            var base = this;
+            base.$elem.children('.mnav-menu').slideToggle(base.subMenuSpeed);         
         },
         /** Event handler for when the menu item is hovered on **/
-        openHover: function(event) {
-            console.log('here');
-            if(!$(this).parent().siblings('.mnav-mobile-btn').is(':visible')) {
-                $(this).children('.mnav-submenu').slideToggle(event.data.speed);
-                $(this).one('mouseleave', function(e) {
-                    $(this).children('.mnav-submenu')
-                    .delay(event.data.delay)
-                    .slideToggle(event.data.speed, function() {
-                        $(this).parent().one('mouseenter', event.data, event.data.func);
+        openHover: function() {
+            var base = this;
+            var active = $('#mnav-active');
+            if(!base.$elem.children('.mnav-mobile-btn').is(':visible')) {
+                active.children('.mnav-submenu').slideToggle(base.subMenuSpeed);
+                active.one('mouseleave', function(e) {
+                    active.children('.mnav-submenu')
+                    .delay(base.delayClose)
+                    .slideToggle(base.subMenuSpeed, function() {
+                        active.one('mouseenter', function() {
+                            if($('#mnav-active').length === 0) {
+                                active.attr('id', 'mnav-active');
+                                base.$elem.trigger('mnav.hover');
+                            } 
+                        });
                     });
                 });
             } else {
-                $(this).one('mouseenter', event.data, event.data.func);
+                active.one('mouseenter', function() {
+                    if($('#mnav-active').length === 0) {
+                        active.attr('id', 'mnav-active');
+                        base.$elem.trigger('mnav.hover');
+                    } 
+                });
             }
+            active.attr('id', '');
         }
     };
     $.fn.Mnav = function(options) {
