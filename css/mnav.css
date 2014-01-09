@@ -1,3 +1,10 @@
+#open-nav {
+    display: none;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 #nav-demo {
   display: inline-block;
   position: relative;
@@ -78,6 +85,10 @@
 }
 
 @media only screen and (max-width: 739px) { /* Set to width according to BASE */
+#open-nav {
+    display: block;    
+}
+
 #nav-demo {
   padding-top: 40px;
 }
