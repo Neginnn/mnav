@@ -15,6 +15,7 @@ if (typeof Object.create !== "function") {
             base.userOptions = options;
             base.prepContainer();
             base.buildWidget();
+            base.prepEvents();
         },
         /** This is where the buttons are added to the nav **/
         buildWidget: function() {
