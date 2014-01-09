@@ -18,6 +18,7 @@
 
 .mnav-menu-item a {
     display: block;
+    min-height: 20px;
     padding: 10px 10px;
 }
 
