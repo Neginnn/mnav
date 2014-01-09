@@ -77,9 +77,12 @@ if (typeof Object.create !== "function") {
         /** Prepares the public events **/
         prepEvents: function() {
             var base = this;
-            base.$elem.on('mnav.open', function() {
-                base.openMenu();
-            });
+            var data = {
+                'speed': base.options.subMenuSpeed,
+                'delay': base.options.delayClose,
+                'func': base.openHover
+            }
+            base.$elem.on('mnav.open', data, base.openMenu);
         },
         /** This is where the necessary classes are added to the elements in your  nav **/
         prepContainer: function() {
