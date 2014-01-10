@@ -90,5 +90,5 @@ You are free to modify the CSS and JS files to fit what you need to do. This is 
 Happy Coding!
 
 ##Version History:
-1.1 - Fixed public event `mnav.open` bug, and restructured how hover and click events are handled
-1.2 - Added an example on how to use `mnav.open` event in `index.html`, and added some pretty styling
+ - `1.1` - Fixed public event `mnav.open` bug, and restructured how hover and click events are handled
+ - `1.2` - Added an example on how to use `mnav.open` event in `index.html`, and added some pretty styling
