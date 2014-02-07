@@ -72,6 +72,7 @@ if (typeof Object.create !== "function") {
                     base.$elem.find('.mnav-submenu').hide();
                     base.$elem.children('.mnav-menu').show();
                 } else if(base.options.subMenuOpen) {
+                    base.$elem.children('.mnav-menu').hide();
                     base.$elem.find('.mnav-submenu').show();
                 }
             });
@@ -103,18 +104,18 @@ if (typeof Object.create !== "function") {
         /** Event handler for opening the menu when the mobile button is pressed **/
         openMenu: function() {
             var base = this;
-            base.$elem.children('.mnav-menu').slideToggle(base.subMenuSpeed);         
+            base.$elem.children('.mnav-menu').slideToggle(base.options.subMenuSpeed);         
         },
         /** Event handler for when the menu item is hovered on **/
         openHover: function() {
             var base = this;
             var active = $('#mnav-active');
             if(!base.$elem.children('.mnav-mobile-btn').is(':visible')) {
-                active.children('.mnav-submenu').slideToggle(base.subMenuSpeed);
+                active.children('.mnav-submenu').slideToggle(base.options.subMenuSpeed);
                 active.one('mouseleave', function(e) {
                     active.children('.mnav-submenu')
                     .delay(base.delayClose)
-                    .slideToggle(base.subMenuSpeed, function() {
+                    .slideToggle(base.options.subMenuSpeed, function() {
                         active.one('mouseenter', function() {
                             if($('#mnav-active').length === 0) {
                                 active.attr('id', 'mnav-active');
