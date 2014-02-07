@@ -72,8 +72,10 @@ if (typeof Object.create !== "function") {
                     base.$elem.find('.mnav-submenu').hide();
                     base.$elem.children('.mnav-menu').show();
                 } else if(base.options.subMenuOpen) {
-                    base.$elem.children('.mnav-menu').hide();
                     base.$elem.find('.mnav-submenu').show();
+                }
+                if(base.$elem.children('.mnav-mobile-btn').is(':visible')) {
+                    base.$elem.children('.mnav-menu').hide();
                 }
             });
         },
