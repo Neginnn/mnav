@@ -116,7 +116,7 @@ if (typeof Object.create !== "function") {
                 active.children('.mnav-submenu').slideToggle(base.options.subMenuSpeed);
                 active.one('mouseleave', function(e) {
                     active.children('.mnav-submenu')
-                    .delay(base.delayClose)
+                    .delay(base.options.delayClose)
                     .slideToggle(base.options.subMenuSpeed, function() {
                         active.one('mouseenter', function() {
                             if($('#mnav-active').length === 0) {
